@@ -1,0 +1,28 @@
+.wrapper{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../image/bg.jpg');
+    background-size: cover;
+    background-blend-mode: multiply;
+    background-color: rgb(70, 70, 70);
+}
+
+.wrapper-card{
+    position: relative;
+    width: 350px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.post-table tr{
+
+        border-bottom: 1px solid black;
+
+}
+
+.post-image img{
+    cursor: pointer;
+}
+

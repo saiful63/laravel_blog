@@ -1,0 +1,12 @@
+.category > li{
+    margin: 0!important;
+}
+.sub_category{
+    margin-left:20px !important;
+    margin-bottom: 5px !important;
+}
+
+.sub_category > li{
+    margin:0 !important;
+    padding: 5px !important;
+}
