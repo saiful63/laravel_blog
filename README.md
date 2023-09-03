@@ -13,7 +13,7 @@ Template for frontend purpose.According to necessity, i changed frontend from ba
 6. Pagination : Applied pagination where necessary.
 7. Type oriented post : User can get specific post according to their desire.As a example, if one click on particular category it gives all post of that category.This behaviour is same for sub category and tag.
 
-## Best practice
+## Best practices
 
 Several industry oriented practice is followed.
 - Templating : To acheive code reusability, master.blade.php file is used many time and page content change according to purpose.@yield is used to acheive this goal.
@@ -26,7 +26,7 @@ Several industry oriented practice is followed.
 - Stand blog template
 - [Sb admin dashboard](https://startbootstrap.com/previews/sb-admin)
 
-### Built With
+## Built With
 
 * [Laravel 9](https://laravel.com/docs/9.x)
 * [Jquery](https://jquery.com/)
