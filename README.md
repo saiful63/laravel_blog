@@ -5,26 +5,33 @@ Template for frontend purpose.According to necessity, i changed frontend from ba
 
 ## Features
 
-1. Custom Registration and login:Designed and developed registration and login page in lieu of Breeze default one.
-2. Manage Post:There are facility to add , show, update, delete for specific post.
-3. Manage Category and Sub Category:According to category , the list of sub category will visible and user can select specific one.
+1. Custom Registration and login : Designed and developed registration and login page in lieu of Breeze default one.
+2. Manage Post : There are facility to add , show, update, delete for specific post.
+3. Manage Category and Sub Category : According to category , the list of sub category will visible and user can select specific one.Jquery-ajax functionality is used for this purpose.
+4. Tags : Many to many relationship is established between post and tag.
+5. Post Search : To find out a post quickly , Searching functionality is developed.
+6. Pagination : Applied pagination where necessary.
+7. Type oriented post : User can get specific post according to their desire.As a example, if one click on particular category it gives all post of that category.This behaviour is same for sub category and tag.
+
+## Best practice
+
+Several industry oriented practice is followed.
+- Templating : To acheive code reusability, master.blade.php file is used many time and page content change according to purpose.@yield is used to acheive this goal.
+- Code reusability : Code reusability is not only be applied for templating but also many other places.Such as, singlePostCategory.blade.php is developed to fulfill purpose of singlePostCategory,singlePostSubCategory and singlePostTag.
+- Process of data through dependency injection instead of using class directly.
+- Maintained the flow of MVC architecture. 
 
 
 ## Template Credit
 - Stand blog template
 - [Sb admin dashboard](https://startbootstrap.com/previews/sb-admin)
 
-# ⚡️ Quickstart
+### Built With
 
-To get started, follow these steps:
+* [Laravel 9](https://laravel.com/docs/9.x)
+* [Jquery](https://jquery.com/)
+* Bootstrap 5
 
-1. **Clone the GitHub Repository:** Begin by cloning the repository using the command:
-   ```
-   git clone https://github.com/OpenBMB/ChatDev.git
-   ```
-2. **Set Up Python Environment:** Ensure you have a version 3.9 or higher Python environment. You can create and activate this environment using the following commands, replacing `ChatDev_conda_env` with your preferred environment name:
-   ```
-   conda create -n ChatDev_conda_env python=3.9 -y
-   conda activate ChatDev_conda_env
-   ```
-3. **Install Dependencies:** Move into the `ChatDev` directory and install the necessary dependencies by running:
+## Package used
+1. Breeze
+2. Laravel Collective
