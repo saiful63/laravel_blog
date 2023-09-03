@@ -34,8 +34,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/',[FrontendController::class,'index']);
-Route::get('single-post',[FrontendController::class,'singlePost']);
+Route::get('/',[FrontendController::class,'index'])->name('homePage');
+Route::get('single-post/{single_post_id}',[FrontendController::class,'singlePost'])->name('singlePost');
+Route::get('view-all-post',[FrontendController::class,'viewAllPost'])->name('viewAllPost');
+Route::get('single_post_category/{single_post_id}',[FrontendController::class,'singlePostCategory'])->name('singlePostCategory');
+Route::get('single_post_sub_category/{single_post_id}',[FrontendController::class,'singlePostSubCategory'])->name('singlePostSubCategory');
+Route::get('single_post_tag/{single_post_id}',[FrontendController::class,'singlePostTag'])->name('singlePostTag');
+Route::get('post_search',[FrontendController::class,'postSearch'])->name('postSearch');
 
 
 Route::group(['prefix'=>'dashboard'],function(){

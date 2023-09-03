@@ -2,9 +2,9 @@
 
 @section('title','Home')
 
-@section('banner')
+{{-- @section('banner')
   @include('Frontend.includes.banner')
-@endsection
+@endsection --}}
 
 
 @section('main-content')
@@ -24,13 +24,13 @@
                     </div>
                     <div class="down-content">
                       <span>{{ $post->category1->name }}</span>
-                      <a href="post-details.html"><h4>{{ $post->title }}</h4></a>
+                      <a href=""><h4>{{ $post->title }}</h4></a>
                       <ul class="post-info">
                         <li><a href="#">{{ $post->users->name }}</a></li>
                         <li><a href="#">{{ date('M d, Y',strtotime($post->created_at)) }}</a></li>
                         <li><a href="#">48 Comments</a></li>
                       </ul>
-                      <p>{{ strip_tags($post->description) }}...<span class="btn btn-sm btn-warning"><a href="{{ route('singlePost',$post->id) }}">Read more</a></span></p>
+                      <p>{{ strip_tags($post->description) }}</p>
 
                       <div class="post-options">
                         <div class="row">
@@ -58,9 +58,7 @@
                 @endforeach
 
                 <div class="col-lg-12">
-                  <div class="main-button">
-                    <a href="{{ route('viewAllPost') }}">View All Posts</a>
-                  </div>
+                 {{ $posts->links() }}
                 </div>
               </div>
             </div>

@@ -4,13 +4,7 @@
   <head>
 
     @include('Frontend.includes.head')
-<!--
 
-TemplateMo 551 Stand Blog
-
-https://templatemo.com/tm-551-stand-blog
-
--->
   </head>
 
   <body>
@@ -28,7 +22,7 @@ https://templatemo.com/tm-551-stand-blog
 
    @yield('main-content')
 
-    
+   @yield('type_oriented_post')
 
 
     @include('Frontend.includes.footer')

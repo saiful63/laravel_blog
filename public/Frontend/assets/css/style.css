@@ -10,3 +10,25 @@
     margin:0 !important;
     padding: 5px !important;
 }
+
+.blog-posts{
+    margin-top: 30px;
+}
+
+.post_search{
+    display: flex;
+    align-items: center;
+
+}
+
+.owl-banner {
+    padding-top: 30px;
+}
+
+.owl-carousel .owl-item img {
+    display: block;
+    width: 100%;
+    height: 300px;
+}
+
+
