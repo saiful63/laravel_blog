@@ -58,10 +58,9 @@
                       </div>
                     </div>
                   </div>
-                </div>
-                
-
+                 </div>
                 @endforeach
+
                     @else
                     @php
                         $p=0;
@@ -140,21 +139,16 @@
                         </div>
                         @endforeach
                         @endforeach
+
                 @endif
-                {{-- <ul>
-                    @foreach ($post_of_tag as $item)
-                    @foreach ($item->posts as $item2)
-                        <li>{{ $item2->description }}</li>
-                    @endforeach
-
-                    @endforeach
-                </ul> --}}
-
 
                 <div class="col-lg-12">
-                  <div class="main-button">
-                    <a href="{{ route('viewAllPost') }}">View All Posts</a>
-                  </div>
+                    {{-- @if(Route::currentRouteName()=='singlePostTag')
+                        {!! $sub_category_item->links() !!}
+                        @else --}}
+                        {{ $sub_category_item->links() }}
+                    {{-- @endif --}}
+
                 </div>
               </div>
             </div>

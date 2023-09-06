@@ -3,11 +3,15 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\SendContactMail;
+use App\Mail\ContactUs;
 use App\Models\Category;
+use App\Models\Contact;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class FrontendController extends Controller
 {
@@ -30,23 +34,17 @@ class FrontendController extends Controller
     }
 
     public function singlePostCategory($single_post_id){
-        $sub_category_item = Post::with('tags','category1','users')->where('category',$single_post_id)->get();
+        $sub_category_item = Post::with('tags','category1','users')->where('category',$single_post_id)->paginate('2');
         return view('Frontend.modules.singlePostCategory',compact('sub_category_item'));
     }
 
     public function singlePostSubCategory($single_post_id){
-        $sub_category_item = Post::with('tags','sub_category1','users')->where('sub_category',$single_post_id)->get();
+        $sub_category_item = Post::with('tags','sub_category1','users')->where('sub_category',$single_post_id)->paginate('2');
         return view('Frontend.modules.singlePostCategory',compact('sub_category_item'));
     }
 
     public function singlePostTag($single_post_id){
-        //return $single_post_id;
-        $sub_category_item = Post::with('tags','users')->get();
         $sub_category_item  = Tag::with('posts')->where('id',$single_post_id)->get();
-        //dd($post_of_tag);
-        //return $post_of_tag;
-        //return $sub_category_item;
-
         $tag_of_post_id = DB::table('post_tag')->where('tag_id',$single_post_id)->pluck('post_id');
         $looped_tag = [];
         foreach($sub_category_item as $items){
@@ -56,15 +54,9 @@ class FrontendController extends Controller
             array_push($looped_tag,$tag);
           }
         }
-        //return $looped_tag;
-        //dd($looped_tag);
-
-        //return $tag_of_post_id;
-        //dd($tag_of_post_id);
-        //return $tag_of_post_id2;
-        //dd($tag_of_post_id2);
          return view('Frontend.modules.singlePostCategory',compact('sub_category_item','looped_tag'));
-        //return view('Frontend.modules.singlePostCategory',compact('post_of_tag'));
+
+
     }
 
     public function viewAllPost(){
@@ -78,5 +70,30 @@ class FrontendController extends Controller
         ->where('title','like','%'.$request->search.'%')
         ->paginate('2');
         return view('Frontend.modules.viewAllPost',compact('posts'));
+    }
+
+    public function contactUs(){
+        return view('Frontend.modules.contactUs');
+    }
+
+    public function addContactMsg(Request $request,Contact $contact){
+        $request->validate([
+            'name'=>'required',
+            'email'=>'required|email',
+            'number'=>'required|numeric',
+            'subject'=>'required',
+            'message'=>'required'
+        ]);
+
+        $msg_store = $contact->create($request->all());
+        SendContactMail::dispatch($msg_store->toArray());
+
+        return redirect()->route('contactUs');
+
+
+    }
+
+    public function postComment(Request $request){
+      dd($request->all());
     }
 }

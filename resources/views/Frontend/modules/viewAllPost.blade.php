@@ -2,11 +2,6 @@
 
 @section('title','Home')
 
-{{-- @section('banner')
-  @include('Frontend.includes.banner')
-@endsection --}}
-
-
 @section('main-content')
   <section class="blog-posts">
       <div class="container">

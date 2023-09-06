@@ -41,6 +41,9 @@ Route::get('single_post_category/{single_post_id}',[FrontendController::class,'s
 Route::get('single_post_sub_category/{single_post_id}',[FrontendController::class,'singlePostSubCategory'])->name('singlePostSubCategory');
 Route::get('single_post_tag/{single_post_id}',[FrontendController::class,'singlePostTag'])->name('singlePostTag');
 Route::get('post_search',[FrontendController::class,'postSearch'])->name('postSearch');
+Route::get('contact_us',[FrontendController::class,'contactUs'])->name('contactUs');
+Route::post('add_contact_msg',[FrontendController::class,'addContactMsg'])->name('addContactMsg');
+Route::post('post_comment',[FrontendController::class,'postComment'])->name('postComment');
 
 
 Route::group(['prefix'=>'dashboard'],function(){
