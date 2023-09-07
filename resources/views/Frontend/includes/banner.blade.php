@@ -11,7 +11,7 @@
                             <div class="meta-category">
                             <span>{{ $post->category1->name }}</span>
                             </div>
-                            <a href="post-details.html"><h4>{{ $post->title }}</h4></a>
+                            <a href="#"><h4>{{ $post->title }}</h4></a>
                             <ul class="post-info">
                             <li><a href="#">{{ $post->users->name }}</a></li>
                             <li><a href="#">{{ date('M d, Y',strtotime($post->created_at)) }}</a></li>

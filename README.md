@@ -42,3 +42,4 @@ Several industry oriented practice is followed.
 ## Upcoming Features
 - Spatie multiple authentication : Through this project , only admin user can upload post and general user can view.role-based authentication will be added soon.
 - Comment and reply functionality.
+- Responsiveness
