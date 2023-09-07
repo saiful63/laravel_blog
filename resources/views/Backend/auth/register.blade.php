@@ -4,7 +4,9 @@
 
 @section('content')
   <div class="mcard">
-        <div class="card sm-card">
+        <div class="sm-card">
+        <div class="card">
+
 
             <div class="card-body">
                 <h5 class="card-title">Registration</h5>
@@ -37,6 +39,8 @@
 
 
                 <p> Already have a account? : <a href="{{ route('login') }}">Login</a></p>
+            </div>
+
             </div>
         </div>
     </div>
