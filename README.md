@@ -36,6 +36,9 @@ Several industry oriented practice is followed.
 1. Breeze
 2. Laravel Collective
 
+## Visit BlogPost
+- BlogPost : http://blogpost.projectbysaiful.com/
+
 ## Upcoming Features
 - Spatie multiple authentication : Through this project , only admin user can upload post and general user can view.role-based authentication will be added soon.
 - Comment and reply functionality.
