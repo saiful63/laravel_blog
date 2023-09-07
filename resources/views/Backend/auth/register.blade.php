@@ -3,8 +3,8 @@
 @section('title','Register')
 
 @section('content')
-  <div class="wrapper">
-        <div class="card wrapper-card">
+  <div class="mcard">
+        <div class="card sm-card">
 
             <div class="card-body">
                 <h5 class="card-title">Registration</h5>
