@@ -143,11 +143,11 @@
                 @endif
 
                 <div class="col-lg-12">
-                    {{-- @if(Route::currentRouteName()=='singlePostCategory' || Route::currentRouteName()=='singlePostSubCategory')
+                    @if(Route::currentRouteName()=='singlePostCategory' || Route::currentRouteName()=='singlePostSubCategory')
 
                         {{ $sub_category_item->links() }}
 
-                    @endif --}}
+                    @endif
 
                 </div>
               </div>
