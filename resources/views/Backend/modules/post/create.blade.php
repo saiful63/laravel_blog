@@ -1,6 +1,6 @@
 @extends('Backend.layouts.master')
 
-@section('title','Category')
+@section('title','Post')
 @section('main')
   <div class="container-fluid">
     <div class="row justify-content-center">
