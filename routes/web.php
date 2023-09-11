@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Backend\TagController;
+use App\Http\Controllers\Backend\UserRoleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,12 +49,20 @@ Route::post('post_comment',[FrontendController::class,'postComment'])->name('pos
 
 Route::group(['prefix'=>'dashboard'],function(){
  Route::get('/',[BackendController::class,'index']);
- Route::resource('/category',CategoryController::class);
- Route::resource('/tag',TagController::class);
- Route::get('/sub-category/categoryBySubCategory',[SubCategoryController::class,'categoryBySubCategory'])->name('categoryBySubCategory');
- Route::resource('/sub-category',SubCategoryController::class);
- Route::get('/selected-tag/{jsonParameter}/{post}',[PostController::class,'tagDataForEdit'])->name('tagDataForEdit');
  Route::resource('/post',PostController::class);
+ Route::get('/sub-category/categoryBySubCategory',[SubCategoryController::class,'categoryBySubCategory'])->name('categoryBySubCategory');
+
+ Route::group(['middleware'=>'multiauth'],function(){
+    Route::resource('/category',CategoryController::class);
+    Route::resource('/tag',TagController::class);
+
+    Route::resource('/sub-category',SubCategoryController::class);
+    Route::get('/selected-tag/{jsonParameter}/{post}',[PostController::class,'tagDataForEdit'])->name('tagDataForEdit');
+    Route::post('roleAssign',[UserRoleController::class,'roleAssign'])->name('roleAssign');
+    Route::resource('user_role',UserRoleController::class);
+
+ });
+
 });
 
 

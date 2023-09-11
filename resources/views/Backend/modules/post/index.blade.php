@@ -2,6 +2,7 @@
 
 @section('title','Post')
 @section('main')
+
   <div class="container-fluid">
     <div class="row justify-content-center">
        <div class="col-md-11 mt-5">
@@ -51,14 +52,90 @@
                             <hr>
                             <p>Updated_at</p>
                         </th>
+                        @if(Auth::user()->hasRole('Admin') || Auth::user()->hasRole('Editor'))
                         <th class="text-center align-middle">Action</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody>
                     @php $sn=1 @endphp
                     @foreach ($posts as $post)
 
+                    @if(Auth::user()->hasRole('Admin') ||Auth::user()->hasRole('Editor') || Auth::user()->hasRole('Observer'))
                     <tr>
+                        <td>
+                            <p>{{ $sn++ }}</p>
+                            <hr>
+                            <p>User : {{ $post->users->name }}, id -> {{ $post->users->id }}</p>
+
+
+                        </td>
+                        <td>
+                            <p>{{ $post->title }}</p>
+                            <hr>
+                            <p>{{ $post->slug }}</p>
+                        </td>
+                        <td>
+                            <p>{{ $post->status == 1?'Published':'Unpublshed' }}</p>
+                            <hr>
+                            <p>{{ $post->is_approved == 1?'Approved':'Not approved' }}</p>
+                        </td>
+                        <td>
+                            <p>{{ $post->category1->name }}</p>
+                            <hr>
+                            <p>{{ $post->sub_category1->name }}</p>
+                        </td>
+
+                        <td>
+                            <div class="d-flex justify-content-center post-image" data-bs-toggle="modal" data-bs-target="#postedImage">
+
+                                <img src="{{ url('image/post/original/'.$post->photo) }}"  class="img-thumbnail postedImageId1"   width="100px" height="100px" alt="">
+                            </div>
+
+                        </td>
+                        <td class="text-center align-middle">
+                            @php
+                            $tag_colours = ['btn-primary','btn-danger','btn-info','btn-warning'];
+                            @endphp
+                            @foreach ($post->tags as $item)
+                               <p class="btn btn-sm {{ $tag_colours[random_int(0,3)] }}">{{ $item->tag }}</p>
+                            @endforeach
+                        </td>
+                        <td>
+                            <p>{{ $post->created_at->toDayDateTimeString() }}</p>
+                            <hr>
+                            <p>{{ $post->updated_at != $post->created_at?$post->updated_at->toDayDateTimeString():'Not Updated' }}</p>
+                        </td>
+                        @if(Auth::user()->hasRole('Admin') || Auth::user()->hasRole('Editor'))
+                        <td>
+                            @php
+
+                                 $jsonParameter = json_encode($post->tags);
+                                    $tag = urlencode($jsonParameter);
+
+                            @endphp
+                            <div class="d-flex justify-content-center">
+                                <div class="m-1"><a href="{{ route('post.show',$post->id) }}"><button class="btn btn-info btn-sm"><i class="fa fa-solid fa-eye"></i></button></a></div>
+
+                            
+                                   <div class="m-1"><a href="{{ route('tagDataForEdit', ['jsonParameter' => $tag,'post'=>$post->id]) }}"><button class="btn btn-warning btn-sm"><i class="fa fa-solid fa-edit"></i></button></a></div>
+
+                                @if(Auth::user()->hasRole('Admin'))
+                                <div class="m-1">
+                                    {!! Form::open(['method'=>'delete','route'=>['post.destroy',$post->id],'id'=>'form']) !!}
+                                        {!! Form::button('<i class="fa fa-solid fa-trash"></i>',['type'=>'button','class'=>'btn btn-danger btn-sm delete']) !!}
+                                    {!! Form::close() !!}
+
+                                </div>
+                                @endif
+                            </div>
+
+                        </td>
+                        @endif
+                    </tr>
+                    @elseif(Auth::user()->id == $post->users->id)
+
+                     <tr>
                         <td>
                             <p>{{ $sn++ }}</p>
                             <hr>
@@ -105,25 +182,32 @@
 
                         <td>
                             @php
-                            
+
                                  $jsonParameter = json_encode($post->tags);
                                     $tag = urlencode($jsonParameter);
 
                             @endphp
                             <div class="d-flex justify-content-center">
+
                                 <div class="m-1"><a href="{{ route('post.show',$post->id) }}"><button class="btn btn-info btn-sm"><i class="fa fa-solid fa-eye"></i></button></a></div>
-                                <div class="m-1"><a href="{{ route('tagDataForEdit', ['jsonParameter' => $tag,'post'=>$post->id]) }}"><button class="btn btn-warning btn-sm"><i class="fa fa-solid fa-edit"></i></button></a></div>
+
+
+                                   <div class="m-1"><a href="{{ route('tagDataForEdit', ['jsonParameter' => $tag,'post'=>$post->id]) }}"><button class="btn btn-warning btn-sm"><i class="fa fa-solid fa-edit"></i></button></a></div>
+
+
                                 <div class="m-1">
                                     {!! Form::open(['method'=>'delete','route'=>['post.destroy',$post->id],'id'=>'form']) !!}
                                         {!! Form::button('<i class="fa fa-solid fa-trash"></i>',['type'=>'button','class'=>'btn btn-danger btn-sm delete']) !!}
                                     {!! Form::close() !!}
 
                                 </div>
+
                             </div>
 
                         </td>
-                    </tr>
 
+                    </tr>
+                    @endif
                     @endforeach
                 </tbody>
                 </table>

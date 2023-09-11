@@ -17,8 +17,9 @@ use Illuminate\Support\Facades\Auth;
 class PostController extends Controller
 {
     public function index(){
-        $posts = Post::with('category1','sub_category1','users','tags')->latest()->paginate('8');
 
+        $posts = Post::with('category1','sub_category1','users','tags')->latest()->paginate('8');
+        //return $user_id = Auth::user()->id;
         return view('Backend.modules.post.index',compact('posts'));
     }
 
