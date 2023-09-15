@@ -13,6 +13,8 @@ Template for frontend purpose.According to necessity, i changed frontend from ba
 6. Pagination : Applied pagination where necessary.
 7. Type oriented post : User can get specific post according to their desire.As a example, if one click on particular category it gives all post of that category.This behaviour is same for sub category and tag.
 9. Multiple authentication : 4 types of user here: Admin,Observer,Editor,General user.When any user register a account , they register as General user.User-role system is developed by which admin can assign role to general user.Role assignment by admin can be editor,observer.Admin can view role and its assigned user as list.Admin can do anything such as view,update and delete in any user post.Editor can only edit users post but cannot delete.Observer can only view users post but cannot do any operation on it.General users can only view their post and manage.Editor,Observer,General user cannot go to admin portion through url.Managing category,sub category,tag can be managed by admin,so other users do not get this functionality.
+10. Any logged in user can comment and replay 
+11. Instead of default breeze profile,custom profile section is designed and developed.Division,district,upazila upadate facility is added.For this purpose one package is used that is known as [laravel-bangladesh-geocode](https://github.com/devfaysal/laravel-bangladesh-geocode)
 
 ## Best practices
 
@@ -42,5 +44,4 @@ Several industry oriented practice is followed.
 - BlogPost : http://blogpost.projectbysaiful.com/
 
 ## Upcoming Features
-- Comment and reply functionality.
 - Responsiveness

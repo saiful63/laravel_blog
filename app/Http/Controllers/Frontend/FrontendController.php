@@ -6,12 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Jobs\SendContactMail;
 use App\Mail\ContactUs;
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Contact;
 use App\Models\Post;
+use App\Models\Replay;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Auth;
 
 class FrontendController extends Controller
 {
@@ -30,7 +33,14 @@ class FrontendController extends Controller
     }
 
     public function singlePost(Request $request,Post $single_post_id){
-        return view('Frontend.modules.singlePost',compact('single_post_id'));
+        $comments = Comment::where('post_id',$single_post_id->id)->get();
+        if($comments){
+            $replies = Replay::with('comment','user')->get();
+        }
+
+        return view('Frontend.modules.singlePost',compact('single_post_id','comments','replies'));
+
+
     }
 
     public function singlePostCategory($single_post_id){
@@ -93,7 +103,33 @@ class FrontendController extends Controller
 
     }
 
-    public function postComment(Request $request){
-      dd($request->all());
+    public function postComment(Request $request,Comment $comment){
+
+      $comment_create = $comment->create([
+        'name'=>Auth::user()->name,
+        'email'=>Auth::user()->email,
+        'comment_text'=>$request->comment_text,
+        'post_id'=>$request->post_id
+      ]);
+
+      if($comment_create){
+        return redirect('single-post/'.$request->post_id);
+      }
+
+
+    }
+
+    public function replayComment(Request $request,Replay $replay){
+
+      $replay_create = $replay->create([
+        'user_id'=>Auth::user()->id,
+        'comment_id'=>$request->comment_id,
+        'replay_text'=>$request->replay_text
+
+      ]);
+
+      if($replay_create){
+        return redirect('single-post/'.$request->post_id);
+      }
     }
 }

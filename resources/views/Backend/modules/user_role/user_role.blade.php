@@ -24,6 +24,7 @@
         <div class="card mt-5">
             <div class="card-header">
             <h4>Assign user to role</h4>
+             
             </div>
 
 
@@ -72,7 +73,20 @@
        </div>
     </div>
   </div>
-
+@if(session('msg'))
+     @push('jquery')
+        <script>
+         Swal.fire({
+            position: 'top-end',
+            toast:true,
+            icon: '{{ session('cls') }}',
+            title: '{{ session('msg') }}',
+            showConfirmButton: false,
+            timer: 3000
+        })
+        </script>
+     @endpush
+  @endif
   @push('jquery')
     <script>
         $(document).ready(function(){

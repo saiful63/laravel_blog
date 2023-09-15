@@ -26,3 +26,8 @@
     cursor: pointer;
 }
 
+.card_body_inner{
+    width: 75%;
+    margin: 0 auto;
+}
+

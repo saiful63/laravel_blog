@@ -64,53 +64,55 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-12">
+                @if(Auth::check())
+                    <div class="col-lg-12">
                   <div class="sidebar-item comments">
                     <div class="sidebar-heading">
-                      <h2>4 comments</h2>
+                      <h2>Comments</h2>
                     </div>
-                    <div class="content">
-                      <ul>
-                        <li>
-                          <div class="author-thumb">
-                            <img src="assets/images/comment-author-01.jpg" alt="">
-                          </div>
-                          <div class="right-content">
-                            <h4>Charles Kate<span>May 16, 2020</span></h4>
-                            <p>Fusce ornare mollis eros. Duis et diam vitae justo fringilla condimentum eu quis leo. Vestibulum id turpis porttitor sapien facilisis scelerisque. Curabitur a nisl eu lacus convallis eleifend posuere id tellus.</p>
-                          </div>
-                        </li>
-                        <li class="replied">
-                          <div class="author-thumb">
-                            <img src="assets/images/comment-author-02.jpg" alt="">
-                          </div>
-                          <div class="right-content">
-                            <h4>Thirteen Man<span>May 20, 2020</span></h4>
-                            <p>In porta urna sed venenatis sollicitudin. Praesent urna sem, pulvinar vel mattis eget.</p>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="author-thumb">
-                            <img src="assets/images/comment-author-03.jpg" alt="">
-                          </div>
-                          <div class="right-content">
-                            <h4>Belisimo Mama<span>May 16, 2020</span></h4>
-                            <p>Nullam nec pharetra nibh. Cras tortor nulla, faucibus id tincidunt in, ultrices eget ligula. Sed vitae suscipit ligula. Vestibulum id turpis volutpat, lobortis turpis ac, molestie nibh.</p>
-                          </div>
-                        </li>
-                        <li class="replied">
-                          <div class="author-thumb">
-                            <img src="assets/images/comment-author-02.jpg" alt="">
-                          </div>
-                          <div class="right-content">
-                            <h4>Thirteen Man<span>May 22, 2020</span></h4>
-                            <p>Mauris sit amet justo vulputate, cursus massa congue, vestibulum odio. Aenean elit nunc, gravida in erat sit amet, feugiat viverra leo.</p>
-                          </div>
-                        </li>
-                      </ul>
+                    <div class="comment_replay">
+
+                        @foreach ($comments as $comment)
+                            <div class="comment_replay_inside">
+                                <div class="comment">
+                                    <h4 class="cmt_h4">{{ $comment->name }}<span class="cmt_span">||</span><span class="cmt_span">{{ $comment->created_at->format('M d, Y') }}</span></h4>
+                                    <p>{{ $comment->comment_text }}</p>
+                                    <div class="replay_comment">
+                                        <form action="{{ route('replayComment') }}" method="post" class="comment_form">
+                                            @csrf
+                                            <input type="hidden" name="comment_id" value="{{ $comment->id }}">
+                                            <input type="hidden" name="post_id" value="{{ $comment->post_id }}">
+                                            <input type="text" name="replay_text" class="from-control replay">
+                                            <button type="submit" class="comment_btn">replay</button>
+                                        </form>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="replay">
+
+                                    @foreach ($replies as $replay)
+                                        @if($replay->comment_id == $comment->id)
+                                        <h4 class="cmt_h4">{{ $replay->user->name }} <span class="cmt_span">||</span><span class="cmt_span">{{ $replay->created_at->format('M d, Y') }}</span></h4>
+                                        <p>{{ $replay->replay_text }}</p>
+                                        @endif
+                                    @endforeach
+
+                                </div>
+                            </div>
+
+                        @endforeach
+
+
+
+
+
                     </div>
                   </div>
                 </div>
+
+
                 <div class="col-lg-12">
                   <div class="sidebar-item submit-comment">
                     <div class="sidebar-heading">
@@ -121,9 +123,9 @@
                         @csrf
                         <div class="row">
                           <div class="col-lg-12">
-                           
+                            <input type="hidden" name="post_id" value="{{ $single_post_id->id }}">
                             <fieldset>
-                              <textarea name="message" rows="1" id="message" placeholder="Type your comment" required=""></textarea>
+                              <textarea name="comment_text" rows="1" id="message" placeholder="Type your comment"></textarea>
                             </fieldset>
                           </div>
                           <div class="col-lg-12">
@@ -136,6 +138,15 @@
                     </div>
                   </div>
                 </div>
+                @else
+                <div class="card">
+                    <div class="card-body">
+                        <span>Please login to comment : <a href="{{ route('login') }}" class="btn btn-primary btn-sm">Login</a></span>
+                    </div>
+                </div>
+
+                @endif
+
               </div>
             </div>
           </div>

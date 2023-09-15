@@ -59,4 +59,71 @@
     cursor: pointer;
 }
 
+ .comment_replay{
+    width:800px;
+    height: 600px;
+    overflow-x: hidden;
+    overflow-y:scroll;
+    border: 1px solid rgb(107, 83, 83);
+    background-color:rgb(224, 241, 255);
+    border-radius: 5px;
+}
+.comment_replay_inside{
+    width: 100%;
+    margin-left: 100px;
+    margin-top: 15px;
+}
+
+.replay_comment input{
+    width: 20%;
+    height: 50%;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid gray;
+    background-color: transparent;
+}
+.replay_comment input[type="text"]:focus{
+    border-color: #337ab7;
+}
+.replay{
+    margin-left: 40px;
+    margin-top: 10px;
+}
+.cmt_h4{
+    font-size: 18px;
+
+}
+.cmt_span{
+    margin:3px;
+}
+
+.comment_btn{
+    width: 56px;
+    height: 29px;
+    background-color: rgb(255, 246, 246);
+    border-radius: 5px;
+}
+
+.comment_replay::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+.comment_replay::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+.comment_replay::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #767171;
+}
+
+
+
 
