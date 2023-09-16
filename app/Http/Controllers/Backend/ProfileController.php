@@ -39,7 +39,10 @@ class ProfileController extends Controller
         ];
         if($request->hasFile('photo')){
           $old_photo_path = public_path('image/profile/'.$request->photo_invisible);
-          unlink($old_photo_path);
+          if(is_file($old_photo_path)){
+            unlink($old_photo_path);
+          }
+
           $photo = $request->file('photo');
           $photo_destination = public_path().'/image/profile/';
           $request->file('photo')->move($photo_destination,$photo->getClientOriginalName());
