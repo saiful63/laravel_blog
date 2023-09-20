@@ -50,7 +50,7 @@ h1,h2,h3,h4,h5,h6 {
 
 .heading-page {
 	padding-top: 30px;
-    margin-top: 30px;
+
 }
 
 .page-heading {
@@ -264,7 +264,7 @@ header .navbar {
 	border-radius: 0px;
 	position: absolute;
 	right: 30px;
-	top: 25px;
+	top: 50px;
 }
 .navbar .navbar-toggler-icon:after {
 	content: '\f0c9';
