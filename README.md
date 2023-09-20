@@ -43,5 +43,3 @@ Several industry oriented practice is followed.
 ## Visit BlogPost
 - BlogPost : http://blogpost.projectbysaiful.com/
 
-## Upcoming Features
-- Responsiveness

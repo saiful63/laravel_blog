@@ -196,7 +196,7 @@ header .navbar {
 .background-header .navbar-nav .show>.nav-link {
 	color: #f48840!important;
 }
-.navbar .navbar-brand {
+ .navbar .navbar-brand {
 	float: 	left;
 	margin-top: -12px;
 	outline: none;
@@ -211,7 +211,7 @@ header .navbar {
     -o-transition: all .3s ease 0s;
     transition: all .3s ease 0s;
 }
-.navbar .navbar-brand h2 em {
+ .navbar .navbar-brand h2 em {
 	font-size: 44px;
 	font-style: normal;
 	color: #f48840;
@@ -219,8 +219,19 @@ header .navbar {
 #navbarResponsive {
 	z-index: 999;
 }
-.navbar-collapse {
-	text-align: center;
+ .navbar-collapse {
+	background: #747474;
+    margin-left: 4px;
+    margin-top: 0;
+    padding: 15px;
+}
+.header_text{
+    padding: 2px;
+    font-size: 25px;
+    font-weight: bold;
+    background-color: #f48840;
+    padding-left: 12px;
+    padding-right: 12px;
 }
 .navbar .navbar-nav .nav-item {
 	margin: 0px 15px;
@@ -234,7 +245,7 @@ header .navbar {
 	color: #1e1e1e;
 	transition: all 0.3s;
 }
-.navbar .navbar-nav .nav-link:hover,
+ .navbar .navbar-nav .nav-link:hover,
 .navbar .navbar-nav .active>.nav-link,
 .navbar .navbar-nav .nav-link.active,
 .navbar .navbar-nav .nav-link.show,
@@ -244,7 +255,7 @@ header .navbar {
 .navbar .navbar-toggler-icon {
 	background-image: none;
 }
-.navbar .navbar-toggler {
+ .navbar .navbar-toggler {
 	border-color: #fff;
 	background-color: #f48840;
 	height: 46px;
@@ -1046,7 +1057,7 @@ footer p a:hover {
 	    background-color: #fff;
 	    box-shadow: 0px 10px 10px rgba(0,0,0,0.1);
 	}
-	.navbar .navbar-nav .nav-item {
+	 .navbar .navbar-nav .nav-item {
 		border-bottom: 1px solid #eee;
 	}
 	.navbar .navbar-nav .nav-item:last-child {
