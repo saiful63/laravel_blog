@@ -40,8 +40,7 @@ Several industry oriented practice is followed.
 2. Laravel Collective
 3. Spatie
 
-## Visit BlogPost
-- BlogPost : http://blogpost.projectbysaiful.com/
+
 
 
 
